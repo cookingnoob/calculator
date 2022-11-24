@@ -1,3 +1,12 @@
+const numberBtn = document.querySelectorAll('button')
+numberBtn.forEach(button =>{
+    button.addEventListener('click', ()=>  console.log(button.textContent))
+})
+
+
+
+
+
 function operate (operator, a, b){
     if (operator === '+'){
         return add(a, b);
