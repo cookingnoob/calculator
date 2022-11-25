@@ -3,8 +3,8 @@ let b = '';
 let operator = '';
 
 const display = document.querySelector('#display');
-const temporal = document.querySelector('.temporal');
-const operations = document.querySelector('.operations');
+const temporal = document.querySelector('.lowerDisplay');
+const operations = document.querySelector('.upperDisplay');
 const numberBtn = document.querySelectorAll('.num')
 const btnOperator = document.querySelectorAll('.operator');
 const equalBtn = document.querySelector('#equal')
@@ -20,7 +20,6 @@ btnOperator.forEach (operation => {
        a = temporal.textContent;
        operator = operation.textContent;
        operations.textContent += `${a}  ${operator}`;
-       temporal.textcontent = ''
     })
 })
 
