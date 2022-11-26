@@ -2,27 +2,36 @@ let a = '';
 let b = '';
 let operator = '';
 
+//display selectors
 const display = document.querySelector('#display');
 const temporal = document.querySelector('.lowerDisplay');
 const operations = document.querySelector('.upperDisplay');
+//boton selectors
 const numberBtn = document.querySelectorAll('.num')
 const btnOperator = document.querySelectorAll('.operator');
 const equalBtn = document.querySelector('#equal')
 
 
 numberBtn.forEach(button =>{
-    button.addEventListener('click', ()=>  temporal.textContent += button.textContent);
+    button.addEventListener('click', ()=>  {
+        temporal.textContent += button.textContent;
+        a = temporal.textContent;
+        
+    });
+    
 })
 
-
-btnOperator.forEach (operation => {
-    operation.addEventListener('click', ()=> {
-       a = temporal.textContent;
-       operator = operation.textContent;
-       operations.textContent += `${a}  ${operator}`;
+btnOperator.forEach(button =>{
+    button.addEventListener('click', ()=>{
+        operator = button.textContent;
+        operations.textContent += `${a} ${operator}`;
+        temporal.textContent = '';
     })
 })
 
+equalBtn.addEventListener('click', () => {
+    
+})
 
 
 
@@ -30,7 +39,12 @@ btnOperator.forEach (operation => {
 
 
 
+
+
+//esto es las funciones de operaciones
 function operate (operator, a, b){
+    a = Number(a);
+    b = Number(b)
     if (operator === '+'){
         return add(a, b);
     } else if (operator === '-'){
@@ -41,8 +55,6 @@ function operate (operator, a, b){
         return divide(a, b);
     };
 }
-
-
 function add(a, b){
     return a + b;
 }
