@@ -15,8 +15,11 @@ const equalBtn = document.querySelector('#equal')
 numberBtn.forEach(button =>{
     button.addEventListener('click', ()=>  {
         temporal.textContent += button.textContent;
+        if (operations.textContent === '') { 
         a = temporal.textContent;
-        
+        } else {
+            b = temporal.textContent;
+        }
     });
     
 })
@@ -30,7 +33,9 @@ btnOperator.forEach(button =>{
 })
 
 equalBtn.addEventListener('click', () => {
-    
+    operations.textContent = `${a} ${operator} ${b}`;
+    temporal.textContent = `${(operate (a, operator, b))}`;
+
 })
 
 
@@ -42,7 +47,7 @@ equalBtn.addEventListener('click', () => {
 
 
 //esto es las funciones de operaciones
-function operate (operator, a, b){
+function operate (a, operator, b){
     a = Number(a);
     b = Number(b)
     if (operator === '+'){
