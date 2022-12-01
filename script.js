@@ -9,8 +9,14 @@ const operations = document.querySelector('.upperDisplay');
 //boton selectors
 const numberBtn = document.querySelectorAll('.num')
 const btnOperator = document.querySelectorAll('.operator');
-const equalBtn = document.querySelector('#equal')
+const equalBtn = document.querySelector('#equal');
+const clearBtn = document.querySelector('#clear');
 
+
+clearBtn.addEventListener('click', () => {
+    temporal.textContent ='';
+    operations.textContent = '';
+})
 
 numberBtn.forEach(button =>{
     button.addEventListener('click', ()=>  {
@@ -35,7 +41,7 @@ btnOperator.forEach(button =>{
 equalBtn.addEventListener('click', () => {
     operations.textContent = `${a} ${operator} ${b}`;
     temporal.textContent = `${(operate (a, operator, b))}`;
-
+    a = temporal.textContent;
 })
 
 
