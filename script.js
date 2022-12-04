@@ -19,7 +19,7 @@ clearBtn.addEventListener('click', () => {
 })
 
 numberBtn.forEach(button =>{
-    button.addEventListener('click', ()=>  {
+    button.addEventListener('click', ()=>  {    //the number on display will go to a or b variable
         temporal.textContent += button.textContent;
         if (operations.textContent === '') { 
         a = temporal.textContent;
@@ -27,11 +27,14 @@ numberBtn.forEach(button =>{
             b = temporal.textContent;
         }
     });
-    
 })
 
 btnOperator.forEach(button =>{
-    button.addEventListener('click', ()=>{
+    button.addEventListener('click', ()=>{  
+        if (operations.textContent.includes('=')){
+            operations.textContent = '';
+            temporal.textContent = a;
+        } 
         operator = button.textContent;
         operations.textContent += `${a} ${operator}`;
         temporal.textContent = '';
@@ -39,7 +42,7 @@ btnOperator.forEach(button =>{
 })
 
 equalBtn.addEventListener('click', () => {
-    operations.textContent = `${a} ${operator} ${b}`;
+    operations.textContent = `${a} ${operator} ${b} =`;
     temporal.textContent = `${(operate (a, operator, b))}`;
     a = temporal.textContent;
 })
