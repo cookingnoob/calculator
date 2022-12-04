@@ -11,12 +11,10 @@ const numberBtn = document.querySelectorAll('.num')
 const btnOperator = document.querySelectorAll('.operator');
 const equalBtn = document.querySelector('#equal');
 const clearBtn = document.querySelector('#clear');
-const deleteBtn = document.querySelector('#delete');
+const deleteBtn = document.querySelector('#delete');;
+const dotBtn = document.querySelector('#dot');
 
-clearBtn.addEventListener('click', () => {
-    temporal.textContent ='';
-    operations.textContent = '';
-})
+
 
 numberBtn.forEach(button =>{
     button.addEventListener('click', ()=>  {    //the number on display will go to a or b variable
@@ -28,39 +26,46 @@ numberBtn.forEach(button =>{
         }
     });
 })
-
-btnOperator.forEach(button =>{
+        //si en vez de = picas otro operador con a + b se haga la operacion y llame a con ese operador
+btnOperator.forEach(button =>{ // falta que si picas otro operador se cambie, ej a + > a *
     button.addEventListener('click', ()=>{  
         operator = button.textContent;
         if (operations.textContent.includes('=')){
             operations.textContent = '';
             temporal.textContent = a;
-        } 
+        } (operations.textContent)
         operations.textContent += `${a} ${operator}`;
         temporal.textContent = '';
     })
 })
 
+
+
+clearBtn.addEventListener('click', allClear)
+
 equalBtn.addEventListener('click', callOperation)
 
-deleteBtn.addEventListener('click', () =>{
-    temporal.textContent = temporal.textContent.slice(0, -1);
-})
+deleteBtn.addEventListener('click', deleteOneNumber)
 
 
 
 
 
-
-
-
+function deleteOneNumber (){ // sigue el anterior valor como a, no el modificado
+    temporal.textContent = temporal.textContent.toString().slice(0, -1);
+}
+function allClear (){
+    temporal.textContent ='';
+    operations.textContent = '';
+    a = 0;
+    b = 0;
+}
 function callOperation (){
     operations.textContent = `${a} ${operator} ${b} =`;
     temporal.textContent = `${(operate (a, operator, b))}`;
     a = temporal.textContent;
 }
 
-//esto es las funciones de operaciones
 function operate (a, operator, b){
     a = Number(a);
     b = Number(b)
