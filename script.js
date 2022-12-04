@@ -31,21 +31,25 @@ numberBtn.forEach(button =>{
 
 btnOperator.forEach(button =>{
     button.addEventListener('click', ()=>{  
+        operator = button.textContent;
         if (operations.textContent.includes('=')){
             operations.textContent = '';
             temporal.textContent = a;
         } 
-        operator = button.textContent;
         operations.textContent += `${a} ${operator}`;
         temporal.textContent = '';
     })
 })
 
-equalBtn.addEventListener('click', () => {
+equalBtn.addEventListener('click', callOperation)
+
+
+function callOperation (){
     operations.textContent = `${a} ${operator} ${b} =`;
     temporal.textContent = `${(operate (a, operator, b))}`;
     a = temporal.textContent;
-})
+}
+
 
 
 
