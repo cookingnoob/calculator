@@ -11,7 +11,7 @@ const numberBtn = document.querySelectorAll('.num')
 const btnOperator = document.querySelectorAll('.operator');
 const equalBtn = document.querySelector('#equal');
 const clearBtn = document.querySelector('#clear');
-
+const deleteBtn = document.querySelector('#delete');
 
 clearBtn.addEventListener('click', () => {
     temporal.textContent ='';
@@ -43,21 +43,22 @@ btnOperator.forEach(button =>{
 
 equalBtn.addEventListener('click', callOperation)
 
+deleteBtn.addEventListener('click', () =>{
+    temporal.textContent = temporal.textContent.slice(0, -1);
+})
+
+
+
+
+
+
+
 
 function callOperation (){
     operations.textContent = `${a} ${operator} ${b} =`;
     temporal.textContent = `${(operate (a, operator, b))}`;
     a = temporal.textContent;
 }
-
-
-
-
-
-
-
-
-
 
 //esto es las funciones de operaciones
 function operate (a, operator, b){
