@@ -34,6 +34,9 @@ btnOperator.forEach(button =>{ // falta que si picas otro operador se cambie, ej
             operations.textContent = '';
             temporal.textContent = a;
         } 
+         if (operations.textContent !== ''){
+           operations.textContent = `${callOperation(a, operator, b)}`
+        }
         operations.textContent += `${a} ${operator}`;
         temporal.textContent = '';
     })
@@ -63,6 +66,7 @@ function allClear (){
     b = 0;
 }
 function callOperation (){
+    if (operations.textContent === '') return;
     operations.textContent = `${a} ${operator} ${b} =`;
     temporal.textContent = `${(operate (a, operator, b))}`;
     a = temporal.textContent;
