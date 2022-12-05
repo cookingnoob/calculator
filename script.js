@@ -43,6 +43,12 @@ btnOperator.forEach(button =>{ // falta que si picas otro operador se cambie, ej
 })
 
 
+dotBtn.addEventListener('click', () => {
+    if (temporal.textContent === '')
+    temporal.textContent = '0'
+   if (temporal.textContent.includes('.')) return
+  temporal.textContent += '.'
+})
 
 clearBtn.addEventListener('click', allClear)
 
@@ -54,10 +60,10 @@ deleteBtn.addEventListener('click', deleteOneNumber)
 
 
 
-function deleteOneNumber (){ // sigue el anterior valor como a, no el modificado
-    temporal.textContent = temporal.textContent.toString().slice(0, -1);
-   
+function deleteOneNumber () { // sigue el anterior valor como a, no el modificado
+    temporal.textContent = temporal.textContent.slice(0, -1);
 }
+
 function allClear (){
     temporal.textContent ='';
     operations.textContent = '';
@@ -65,6 +71,7 @@ function allClear (){
     a = 0;
     b = 0;
 }
+
 function callOperation (){
     if (operations.textContent === '') return;
     operations.textContent = `${a} ${operator} ${b} =`;
