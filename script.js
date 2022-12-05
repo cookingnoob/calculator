@@ -33,7 +33,7 @@ btnOperator.forEach(button =>{ // falta que si picas otro operador se cambie, ej
         if (operations.textContent.includes('=')){
             operations.textContent = '';
             temporal.textContent = a;
-        } (operations.textContent)
+        } 
         operations.textContent += `${a} ${operator}`;
         temporal.textContent = '';
     })
@@ -53,10 +53,12 @@ deleteBtn.addEventListener('click', deleteOneNumber)
 
 function deleteOneNumber (){ // sigue el anterior valor como a, no el modificado
     temporal.textContent = temporal.textContent.toString().slice(0, -1);
+   
 }
 function allClear (){
     temporal.textContent ='';
     operations.textContent = '';
+    operator = ''
     a = 0;
     b = 0;
 }
