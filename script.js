@@ -30,14 +30,18 @@ numberBtn.forEach(button =>{
 btnOperator.forEach(button =>{ 
     button.addEventListener('click', ()=>{  
         
-        // if (operations.textContent.includes('=')){
-        //     operations.textContent = '';
-        //     temporal.textContent = a;
-        // } 
+         if (operations.textContent.includes('=')){
+             operations.textContent = '';
+             temporal.textContent = a;
+        } 
         //  if (operations.textContent !== ''){
         //    operations.textContent = `${callOperation(a, operator, b)}`
         // }
-        a = temporal.textContent;
+        if (operations.textContent === '') { 
+            a = temporal.textContent;
+        } else {
+             b = temporal.textContent;
+        }
         operator = button.textContent;
         operations.textContent += `${a} ${operator}`;
         temporal.textContent = '';
@@ -58,11 +62,17 @@ equalBtn.addEventListener('click', callOperation)
 
 deleteBtn.addEventListener('click', deleteOneNumber)
 
+function callOperation (){
+    if (operations.textContent === '') return;
+    b = temporal.textContent
+    operations.textContent = `${a} ${operator} ${b} =`;
+    temporal.textContent = `${(operate (a, operator, b))}`;
+    a = temporal.textContent;
+}
 
 
 
-
-function deleteOneNumber () { // sigue el anterior valor como a, no el modificado
+function deleteOneNumber () { 
     temporal.textContent = temporal.textContent.slice(0, -1);
 }
 
@@ -74,12 +84,7 @@ function allClear (){
     b = 0;
 }
 
-function callOperation (){
-    if (operations.textContent === '') return;
-    operations.textContent = `${a} ${operator} ${b} =`;
-    temporal.textContent = `${(operate (a, operator, b))}`;
-    a = temporal.textContent;
-}
+
 
 function operate (a, operator, b){
     a = Number(a);
