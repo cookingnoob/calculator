@@ -17,26 +17,28 @@ const dotBtn = document.querySelector('#dot');
 
 
 numberBtn.forEach(button =>{
-    button.addEventListener('click', ()=>  {    //the number on display will go to a or b variable
+    button.addEventListener('click', ()=>  {   
         temporal.textContent += button.textContent;
-        if (operations.textContent === '') { 
-        a = temporal.textContent;
-        } else {
-            b = temporal.textContent;
-        }
+        // if (operations.textContent === '') { 
+        // a = temporal.textContent;
+        // } else {
+        //     b = temporal.textContent;
+        // }
     });
 })
-        //si en vez de = picas otro operador con a + b se haga la operacion y llame a con ese operador
-btnOperator.forEach(button =>{ // falta que si picas otro operador se cambie, ej a + > a *
+        
+btnOperator.forEach(button =>{ 
     button.addEventListener('click', ()=>{  
+        
+        // if (operations.textContent.includes('=')){
+        //     operations.textContent = '';
+        //     temporal.textContent = a;
+        // } 
+        //  if (operations.textContent !== ''){
+        //    operations.textContent = `${callOperation(a, operator, b)}`
+        // }
+        a = temporal.textContent;
         operator = button.textContent;
-        if (operations.textContent.includes('=')){
-            operations.textContent = '';
-            temporal.textContent = a;
-        } 
-         if (operations.textContent !== ''){
-           operations.textContent = `${callOperation(a, operator, b)}`
-        }
         operations.textContent += `${a} ${operator}`;
         temporal.textContent = '';
     })
