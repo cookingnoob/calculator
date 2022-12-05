@@ -19,11 +19,6 @@ const dotBtn = document.querySelector('#dot');
 numberBtn.forEach(button =>{
     button.addEventListener('click', ()=>  {   
         temporal.textContent += button.textContent;
-        // if (operations.textContent === '') { 
-        // a = temporal.textContent;
-        // } else {
-        //     b = temporal.textContent;
-        // }
     });
 })
         
@@ -34,13 +29,16 @@ btnOperator.forEach(button =>{
              operations.textContent = '';
              temporal.textContent = a;
         } 
-        //  if (operations.textContent !== ''){
-        //    operations.textContent = `${callOperation(a, operator, b)}`
-        // }
+        
         if (operations.textContent === '') { 
             a = temporal.textContent;
         } else {
              b = temporal.textContent;
+        }
+        
+        if (operations.textContent !== '') {
+            callOperation(a, operator, b);
+            operations.textContent = '';
         }
         operator = button.textContent;
         operations.textContent += `${a} ${operator}`;
