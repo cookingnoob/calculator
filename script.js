@@ -35,11 +35,15 @@ btnOperator.forEach(button =>{
         } else {
              b = temporal.textContent;
         }
-        
+
+   
+
         if (operations.textContent !== '') {
             callOperation(a, operator, b);
             operations.textContent = '';
         }
+
+      
         operator = button.textContent;
         operations.textContent += `${a} ${operator}`;
         temporal.textContent = '';
@@ -64,7 +68,7 @@ function callOperation (){
     if (operations.textContent === '') return;
     b = temporal.textContent
     operations.textContent = `${a} ${operator} ${b} =`;
-    temporal.textContent = `${(operate (a, operator, b))}`;
+    temporal.textContent = `${(Math.round(operate(a, operator, b) * 1000) / 1000)}`;
     a = temporal.textContent;
 }
 
